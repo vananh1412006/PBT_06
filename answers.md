@@ -69,3 +69,40 @@ Các class này đều dùng để bao bọc và căn giữa nội dung (chứa 
 | Đặc tính | `.container` | `.container-fluid` | `.container-md` |
 | :--- | :--- | :--- | :--- |
 | **Cơ chế hoạt động** | Co giãn theo từng breakpoint (Responsive cố định). | Luôn chiếm toàn bộ chiều rộng
+
+# PHẦN C — PHÂN TÍCH (20 điểm)
+
+## Câu C1 (10đ) — Tùy biến Bootstrap
+
+### 1. Quy trình đổi màu `$primary` từ xanh mặc định sang `#E63946`
+
+Để thay đổi biến cốt lõi của Bootstrap một cách hệ thống, chúng ta không sửa trực tiếp trong file mã nguồn của Bootstrap (trong thư mục `node_modules`) mà sẽ thực hiện qua quy trình biên dịch SASS (SCSS) như sau:
+
+#### * Công cụ cần thiết:
+- **Node.js & npm:** Để quản lý và cài đặt các gói phụ thuộc.
+- **Bootstrap Source Code:** Được cài đặt qua npm (`npm install bootstrap`).
+- **Trình biên dịch SASS:** Có thể dùng gói `sass` của npm hoặc extension **Live Sass Compiler** trên VS Code để biên dịch file `.scss` thành file `.css`.
+
+#### * Quy trình thực hiện chi tiết:
+1. **Khởi tạo dự án:** Chạy lệnh `npm init -y` và `npm install bootstrap` để tải mã nguồn thư viện về máy.
+2. **Tạo file cấu hình tùy biến:** Tạo một file SASS riêng của dự án, ví dụ đặt tên là `assets/scss/custom.scss`.
+3. **Modify file (Ghi đè biến):** Trong file `custom.scss`, ta sẽ khai báo lại giá trị của biến `$primary` **trước** khi import Bootstrap. Cụ thể code sẽ như sau:
+   ```scss
+   // 1. Khởi tạo hoặc import các hàm màu sắc của Bootstrap (nếu cần sử dụng các hàm như tint-color, shade-color)
+   @import "../node_modules/bootstrap/scss/functions";
+   @import "../node_modules/bootstrap/scss/variables";
+
+   // 2. Ghi đè màu primary theo ý muốn
+   $primary: #E63946;
+
+   // 3. Import toàn bộ phần còn lại của Bootstrap để áp dụng thay đổi
+   @import "../node_modules/bootstrap/scss/bootstrap";
+
+### 2. Tại sao KHÔNG nên override trực tiếp bằng CSS truyền thống?
+Việc viết đè kiểu .btn-primary { background: red; } bằng CSS thuần tuy chạy được ngay nhưng mang lại rất nhiều hệ lụy xấu. Việc dùng SASS Variables vượt trội hơn hoàn toàn vì các lý do sau:
+
+Tính đồng bộ và nhất quán hệ thống: Trong Bootstrap, biến $primary không chỉ quy định màu nền của nút bấm .btn-primary, mà nó còn được dùng tự động cho hàng loạt thành phần khác như: màu chữ .text-primary, màu nền .bg-primary, màu viền .border-primary, trạng thái active/focus của form input, các thanh tiến trình (progress bar), badge, v.v. Nếu chỉ override CSS của .btn-primary, các thành phần khác vẫn sẽ mang màu xanh mặc định, gây lệch tone giao diện. Thay đổi biến SASS giúp tất cả chuyển sang màu mới chỉ với 1 dòng code.
+
+Giữ nguyên các hiệu ứng động (States): Một nút bấm chuẩn cần có các trạng thái như :hover (rê chuột), :focus (nhấp chọn), :active (đang bấm). Bootstrap dùng các hàm toán học của SASS để tự động tính toán tạo ra màu hover đậm hơn một chút từ màu gốc $primary. Nếu dùng CSS thuần override, ta sẽ phải tự viết tay lại toàn bộ các class phức tạp như .btn-primary:hover, .btn-primary:focus, gây tốn thời gian và dễ sót.
+
+Tránh xung đột độ ưu tiên (Specificity): Khai báo bằng SASS Variables giúp mã CSS sinh ra sạch sẽ, tự nhiên, không cần lạm dụng các mẹo tăng độ ưu tiên hoặc dùng từ khóa tệ hại !important trong CSS làm code khó bảo trì sau này.
