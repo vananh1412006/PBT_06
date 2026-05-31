@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TailwindCSS E-Commerce Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+
+    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 shadow-sm transition-colors duration-300 dark:bg-gray-800 dark:border-gray-700">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-wider text-gray-900 dark:text-yellow-400 flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-yellow-500"></i>⚡TECHZONE
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#" class="text-blue-600 dark:text-blue-400">Trang chủ</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Sản phẩm</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Khuyến mãi</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">Liên hệ</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-600 dark:text-yellow-400 transition-colors" title="Đổi giao diện">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+                
+                <a href="#" class="relative p-2 text-gray-700 dark:text-gray-200">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-500 rounded-full">3</span>
+                </a>
+
+                <button onclick="toggleMobileMenu()" class="block md:hidden p-2 text-gray-600 dark:text-gray-300">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden mt-3 pt-3 border-t border-gray-100 dark:border-gray-700 space-y-2 pb-2">
+            <a href="#" class="block px-3 py-2 rounded bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-blue-400 font-medium">Trang chủ</a>
+            <a href="#" class="block px-3 py-2 rounded text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Sản phẩm</a>
+            <a href="#" class="block px-3 py-2 rounded text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Khuyến mãi</a>
+            <a href="#" class="block px-3 py-2 rounded text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">Liên hệ</a>
+        </div>
+    </nav>
+
+    <section class="relative w-full bg-cover bg-center h-[420px] flex items-center justify-center shadow-inner" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1420');">
+        <div class="text-center px-6 max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4 uppercase">Kỷ Nguyên Công Nghệ Mới 2026</h1>
+            <p class="text-gray-200 text-sm md:text-lg mb-8 font-light leading-relaxed">Trải nghiệm những sản phẩm công nghệ tiên phong, nâng tầm không gian làm việc và giải trí của bạn với ưu đãi lên tới 40%.</p>
+            <a href="#products" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-md shadow-md transition-all transform hover:-translate-y-0.5">
+                Khám Phá Ngay <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+            </a>
+        </div>
+    </section>
+
+    <main id="products" class="container mx-auto px-4 py-12">
+        <h2 class="text-2xl md:text-3xl font-black text-center mb-10 tracking-wide uppercase text-gray-900 dark:text-white">
+            Sản phẩm bán chạy
+            <span class="block w-20 h-1 bg-blue-600 mx-auto mt-2 rounded"></span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col justify-between dark:bg-gray-800 border border-transparent dark:border-gray-700">
+                <div>
+                    <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm z-10">SALE</span>
+                    <div class="overflow-hidden h-48 bg-gray-100 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Sản phẩm 1">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white truncate">Laptop Workstation Gen X</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">Bộ vi xử lý tích hợp AI thế hệ mới nhất, đáp ứng hoàn hảo các tác vụ render và lập trình nặng.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0">
+                    <div class="flex items-baseline gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-lg">26.890.000đ</span>
+                        <span class="text-gray-400 text-xs line-through">31.000.000đ</span>
+                    </div>
+                    <button class="w-full bg-gray-900 hover:bg-gray-800 text-white dark:bg-blue-600 dark:hover:bg-blue-700 text-sm font-medium py-2 rounded transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+
+            <div class="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col justify-between dark:bg-gray-800 border border-transparent dark:border-gray-700">
+                <div>
+                    <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm z-10">SALE</span>
+                    <div class="overflow-hidden h-48 bg-gray-100 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Sản phẩm 2">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white truncate">Tai Nghe Studio Wireless</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">Màng loa cao cấp cho âm thanh độ phân giải cao, chống ồn hỗn hợp thông minh ANC.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0">
+                    <div class="flex items-baseline gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-lg">2.150.000đ</span>
+                        <span class="text-gray-400 text-xs line-through">2.900.000đ</span>
+                    </div>
+                    <button class="w-full bg-gray-900 hover:bg-gray-800 text-white dark:bg-blue-600 dark:hover:bg-blue-700 text-sm font-medium py-2 rounded transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+
+            <div class="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col justify-between dark:bg-gray-800 border border-transparent dark:border-gray-700">
+                <div>
+                    <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm z-10">SALE</span>
+                    <div class="overflow-hidden h-48 bg-gray-100 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Sản phẩm 3">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white truncate">Smartwatch Active 3</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">Cảm biến đo nồng độ oxy sinh học liên tục, thiết kế thể thao tinh tế, chống nước chuẩn IP68.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0">
+                    <div class="flex items-baseline gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-lg">3.490.000đ</span>
+                        <span class="text-gray-400 text-xs line-through">4.500.000đ</span>
+                    </div>
+                    <button class="w-full bg-gray-900 hover:bg-gray-800 text-white dark:bg-blue-600 dark:hover:bg-blue-700 text-sm font-medium py-2 rounded transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+
+            <div class="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden relative flex flex-col justify-between dark:bg-gray-800 border border-transparent dark:border-gray-700">
+                <div>
+                    <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded shadow-sm z-10">SALE</span>
+                    <div class="overflow-hidden h-48 bg-gray-100 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1527698266440-12104e498b76?q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Sản phẩm 4">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-gray-900 dark:text-white truncate">Bàn Phím Cơ Gasket-Mount</h3>
+                        <p class="text-gray-500 dark:text-gray-400 text-xs mt-1 line-clamp-2 leading-relaxed">Trải nghiệm gõ êm ái tiêu âm cực chuẩn, switch đã được pre-lubed cực kỳ mượt mà.</p>
+                    </div>
+                </div>
+                <div class="p-4 pt-0">
+                    <div class="flex items-baseline gap-2 mb-3">
+                        <span class="text-red-500 font-bold text-lg">1.650.000đ</span>
+                        <span class="text-gray-400 text-xs line-through">2.100.000đ</span>
+                    </div>
+                    <button class="w-full bg-gray-900 hover:bg-gray-800 text-white dark:bg-blue-600 dark:hover:bg-blue-700 text-sm font-medium py-2 rounded transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 pt-12 pb-6 mt-16 transition-colors duration-300 dark:bg-black dark:text-gray-500 border-t dark:border-gray-950">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+                <h4 class="text-white font-bold text-lg mb-4 dark:text-yellow-400"><i class="fa-solid fa-bolt mr-2"></i>TECHZONE</h4>
+                <p class="text-xs leading-relaxed">Hệ thống phân phối thiết bị công nghệ số và giải pháp giải trí cao cấp, mang thế giới số đến ngôi nhà của bạn.</p>
+                <div class="flex gap-4 mt-4 text-lg">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 dark:text-gray-200">Chính Sách</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-white transition-colors">Chính sách bảo hành vàng</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Đổi trả miễn phí 30 ngày</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Vận chuyển và đồng kiểm</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 dark:text-gray-200">Hỗ trợ khách hàng</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-white transition-colors">Tìm kiếm showroom gần nhất</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Hướng dẫn trả góp 0%</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Phản hồi chất lượng dịch vụ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 dark:text-gray-200">Đăng ký nhận tin</h4>
+                <p class="text-xs mb-3">Nhập email để nhận ngay mã voucher giảm giá 100k cho đơn hàng đầu tiên.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Email của bạn..." class="bg-gray-800 text-white px-3 py-2 text-xs rounded-l focus:outline-none w-full border border-transparent focus:border-gray-700">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-xs font-bold rounded-r transition-colors">GỬI</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 border-t border-gray-800 dark:border-gray-900 mt-8 pt-6 text-center text-xs">
+            <p>&copy; 2026 TechZone. All Rights Reserved. Xây dựng phục vụ PBT06 Nền tảng Web.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Hàm bật/tắt Dark Mode
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fa-solid fa-moon text-lg';
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-sun text-lg';
+            }
+        }
+
+        // 2. Hàm bật/tắt Menu thu gọn trên Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
