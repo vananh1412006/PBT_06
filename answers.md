@@ -106,3 +106,28 @@ Tính đồng bộ và nhất quán hệ thống: Trong Bootstrap, biến $prima
 Giữ nguyên các hiệu ứng động (States): Một nút bấm chuẩn cần có các trạng thái như :hover (rê chuột), :focus (nhấp chọn), :active (đang bấm). Bootstrap dùng các hàm toán học của SASS để tự động tính toán tạo ra màu hover đậm hơn một chút từ màu gốc $primary. Nếu dùng CSS thuần override, ta sẽ phải tự viết tay lại toàn bộ các class phức tạp như .btn-primary:hover, .btn-primary:focus, gây tốn thời gian và dễ sót.
 
 Tránh xung đột độ ưu tiên (Specificity): Khai báo bằng SASS Variables giúp mã CSS sinh ra sạch sẽ, tự nhiên, không cần lạm dụng các mẹo tăng độ ưu tiên hoặc dùng từ khóa tệ hại !important trong CSS làm code khó bảo trì sau này.
+
+## Câu C2 (10đ) — So sánh (CSS thuần vs Bootstrap)
+
+### 1. Bảng so sánh thực tế khi xây dựng Giao diện (Navbar Responsive + Product Card)
+
+| Tiêu chí so sánh | Sử dụng CSS thuần (Vanilla CSS) | Sử dụng Bootstrap Framework |
+| :--- | :--- | :--- |
+| **Số dòng CSS cần viết** | **Rất nhiều (Khoảng 80 - 150 dòng CSS)**<br>- Phải tự viết Reset CSS, Flexbox/Grid layout.<br>- Viết Media Queries chi tiết cho từng breakpoint.<br>- Viết hiệu ứng `@keyframes` hoặc `transition` cho Mobile Menu toggle. | **Gần như bằng 0 (Hoặc chỉ vài dòng bổ sung)**<br>- Không cần viết file `.css` riêng.<br>- Sử dụng hoàn toàn các Utility Classes có sẵn (`navbar`, `d-flex`, `card`, `col-*`, `g-*`). |
+| **Thời gian phát triển** | **Lâu (Mất từ 1 - 2 tiếng)**<br>- Tốn thời gian căn chỉnh pixel, test hiển thị chéo trên nhiều thiết bị, xử lý ẩn/hiện menu bằng JavaScript thuần. | **Cực nhanh (Mất 10 - 15 phút)**<br>- Chỉ cần ráp các component chuẩn từ tài liệu của Bootstrap.<br>- Tính năng Responsive đã được tối ưu sẵn vô cùng mượt mà. |
+| **Khả năng tùy biến** | **Vô hạn và Tuyệt đối**<br>- Kiểm soát 100% từng thuộc tính, không phụ thuộc cấu trúc.<br>- Dễ dàng tạo ra các layout độc lạ, hiệu ứng Animation phức tạp theo ý muốn cá nhân. | **Bị giới hạn (Nếu chỉ dùng class cơ bản)**<br>- Giao diện dễ bị đại trà, mang "màu sắc Bootstrap".<br>- Muốn tùy biến sâu phải can thiệp cấu trúc SASS phức tạp hoặc viết đè CSS khá cồng kềnh. |
+
+---
+
+### 2. Khi nào NÊN và KHÔNG NÊN sử dụng Bootstrap?
+
+#### * Khi nào NÊN dùng Bootstrap?
+- **Dự án cần phát triển thần tốc (Mẫu thử - Prototype / MVP):** Khi thời gian hoàn thành dự án cực kỳ gấp rút, cần giao diện trực quan ngay để demo.
+- **Trang quản trị (Dashboard / Admin Panel):** Những hệ thống chú trọng vào công năng, dữ liệu, không đòi hỏi giao diện quá nghệ thuật hay phá cách.
+- **Làm việc nhóm (Teamwork):** Khung thiết kế chuẩn của Bootstrap giúp tất cả thành viên trong đội ngũ lập trình có chung một tiếng nói, dễ đọc code và bảo trì giao diện của nhau mà không sợ mỗi người viết CSS một kiểu.
+- **Lập trình viên Backend làm Fullstack:** Khi bạn mạnh về logic hệ thống nhưng không muốn tốn quá nhiều thời gian để tự mò mẫm cắt CSS giao diện từ đầu.
+
+#### * Khi nào KHÔNG NÊN dùng Bootstrap?
+- **Website đòi hỏi thiết kế độc quyền, đậm tính thương hiệu:** Các trang Landing Page sáng tạo, Portfolio nghệ thuật, trang chiến dịch Marketing cần độ tùy biến giao diện cao, hiệu ứng chuyển động lạ mắt.
+- **Yêu cầu tối ưu hiệu năng tối đa (Performance):** Bootstrap đi kèm với dung lượng file CSS và JS khá lớn (chứa hàng nghìn class mà dự án có thể không bao giờ dùng tới). Nếu cần một trang web siêu nhẹ, tải nhanh tuyệt đối trên mobile, CSS thuần hoặc TailwindCSS (chỉ giữ lại class được dùng) là lựa chọn tốt hơn.
+- **Mục đích học tập cốt lõi:** Khi mới tiếp cận lập trình Web, lạm dụng Bootstrap quá sớm sẽ khiến người học bị rỗng kiến thức nền tảng về CSS Layout (Flexbox, Grid, Position), dẫn đến việc bị phụ thuộc hoàn toàn vào framework.
